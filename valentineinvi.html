@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Valentine Invitation</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: "Comic Sans MS", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffb3c6, #ffe5ec);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 25px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 380px;
+      display: none;
+    }
+
+    .card.active {
+      display: block;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      font-size: 28px;
+      margin: 10px 0 15px 0;
+    }
+
+    h3 {
+      color: #ff4d6d;
+      font-size: 20px;
+      margin: 15px 0 10px 0;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    button {
+      padding: 14px 24px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 8px 6px;
+      min-width: 100px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      touch-action: manipulation;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+      box-shadow: 0 4px 8px rgba(255, 77, 109, 0.3);
+    }
+
+    .yesBtn:active {
+      box-shadow: 0 2px 4px rgba(255, 77, 109, 0.3);
+    }
+
+    .noBtn {
+      background-color: #6c757d;
+      color: white;
+      box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+    }
+
+    .noBtn:active {
+      box-shadow: 0 2px 4px rgba(108, 117, 125, 0.3);
+    }
+
+    img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      border-radius: 15px;
+      margin: 15px auto;
+      display: block;
+      min-height: 200px;
+      background: #f0f0f0;
+    }
+
+    #buttons, .card > div {
+      margin-top: 15px;
+    }
+
+    /* Prevent text selection on buttons */
+    button {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* Loading state for images */
+    img[src] {
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive adjustments for very small screens */
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      button {
+        padding: 12px 20px;
+        font-size: 16px;
+        margin: 6px 4px;
+        min-width: 85px;
+      }
+
+      .card {
+        padding: 20px 15px;
+      }
+    }
+
+    /* Larger screens */
+    @media (min-width: 480px) {
+      .card {
+        padding: 30px 25px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="card active" id="page1">
+    <h1>Hello, Xy!!</h1>
+    <p>Will you be my Valentine?hihi</p>
+
+    <!-- OPENING GIF - Using direct Giphy CDN link -->
+    <img src="https://media1.giphy.com/media/t8xgPfC5oNIRMrNooe/giphy.gif?cid=ecf05e47" alt="Valentine GIF" crossorigin="anonymous">
+
+    <div id="buttons">
+      <button class="yesBtn" onclick="showYes()">Yes</button>
+      <button class="noBtn" onclick="firstNo()">No</button>
+    </div>
+
+    <div id="gifContainer"></div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="card" id="page2">
+    <h1>Sure?</h1>
+    <p>payag kana pls</p>
+    <img src="https://media1.giphy.com/media/OzlmyoTC2n3aOTXGFi/giphy.gif?cid=ecf05e47" alt="Pleading GIF" crossorigin="anonymous">
+
+    <div>
+      <button class="yesBtn" onclick="showYes()">Yes</button>
+      <button class="noBtn" onclick="secondNo()">No</button>
+    </div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="card" id="page3">
+    <h1>Please please please</h1>
+    <p>sige na wowo</p>
+    <img src="https://media1.giphy.com/media/OzlmyoTC2n3aOTXGFi/giphy.gif?cid=ecf05e47" alt="Pleading GIF" crossorigin="anonymous">
+
+    <div>
+      <button class="yesBtn" onclick="showYes()">Yes</button>
+      <button class="noBtn" onclick="stayHere()">No</button>
+    </div>
+  </div>
+
+  <!-- PAGE YES -->
+  <div class="card" id="pageYes">
+    <h1>Yay!</h1>
+    <p>Salamat hehe, thank you so much mwa</p>
+    <img src="https://media1.giphy.com/media/l2uluGTvB7DAQvZyHp/giphy.gif?cid=ecf05e47" alt="Happy GIF" crossorigin="anonymous">
+  </div>
+
+  <script>
+    function showYes() {
+      hideAllPages();
+      document.getElementById("pageYes").classList.add("active");
+    }
+
+    function firstNo() {
+      switchPage("page1", "page2");
+    }
+
+    function secondNo() {
+      switchPage("page2", "page3");
+    }
+
+    function stayHere() {
+      alert("please hehe");
+    }
+
+    function switchPage(from, to) {
+      document.getElementById(from).classList.remove("active");
+      document.getElementById(to).classList.add("active");
+    }
+
+    function hideAllPages() {
+      document.querySelectorAll(".card").forEach(card => {
+        card.classList.remove("active");
+      });
+    }
+  </script>
+
+</body>
+</html>
